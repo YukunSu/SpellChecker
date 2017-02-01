@@ -1,6 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Word {
     private String word = "";
+    private boolean isWord = true;
+    private List<Word> newProposedWords;
+    
     public Word(String word) {
         this.word = word;
     }
@@ -9,6 +15,30 @@ public class Word {
         return this.word;
     }
     
+    public boolean isWord() {
+        return isWord;
+    }
+
+    public void setWord(boolean isWord) {
+        this.isWord = isWord;
+    }
+
+    public List<Word> getNewProposedWords() {
+        return newProposedWords;
+    }
+
+    public void addNewProposedWord(String newProposedWords) {
+        if(this.newProposedWords==null) this.newProposedWords = new ArrayList<Word>();
+        synchronized(this){
+        for(int i=0; i<this.newProposedWords.size(); i++){
+            if(this.newProposedWords.get(i).getWord().equals(newProposedWords)){
+                return;
+            }
+        }
+        this.newProposedWords.add(new Word(newProposedWords));
+        }
+    }
+
     //TODO need improvement
     public static String removeStartAndEndPunctuationOfAWord(String t){
         String s = t;

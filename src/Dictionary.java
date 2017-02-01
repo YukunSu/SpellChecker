@@ -5,15 +5,15 @@ import java.util.HashSet;
 
 //TODO Future improvement: reading large file, will need to divide and conquer.
 public class Dictionary {
-    private HashSet<Word> wordSet; 
+    private HashSet<String> wordSet; 
     private BufferedReader br = null;
     private FileReader fr = null;
 
     public Dictionary(){
-        wordSet = new HashSet<Word>();
+        wordSet = new HashSet<String>();
     }
     
-    public HashSet<Word> getWordSet(){
+    public HashSet<String> getWordSet(){
         return this.wordSet;
     }
     
@@ -24,8 +24,8 @@ public class Dictionary {
             String sCurrentLine;
             br = new BufferedReader(new FileReader(path));
             while ((sCurrentLine = br.readLine()) != null) {
-                wordSet.add(new Word(sCurrentLine));
-                System.out.println(sCurrentLine);
+                wordSet.add(sCurrentLine);
+                //System.out.println(sCurrentLine);
             }
         } catch (IOException e) {
             e.printStackTrace();
