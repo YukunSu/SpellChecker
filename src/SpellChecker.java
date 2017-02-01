@@ -69,6 +69,7 @@ public class SpellChecker implements Runnable {
         if (dictionary.getWordSet().contains(withoutFirstChar)) {
             w.addNewProposedWord(withoutFirstChar);
         }
+        
         for (int i = 1; i < len; i++) {
             // try removing each char between (not including) the first and last
             String working = w.getWord().substring(0, i);
