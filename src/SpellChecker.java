@@ -38,7 +38,7 @@ public class SpellChecker implements Runnable {
 
                 if (!dictionary.getWordSet().contains(w.getWord()) && !dictionary.getWordSet().contains(w.getWord().toLowerCase()))
                 {
-                    w.setWord(false);
+                    w.setIsWord(false);
                     getProposedWordList(w);
                 }
             }

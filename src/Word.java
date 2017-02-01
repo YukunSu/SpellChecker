@@ -14,11 +14,15 @@ public class Word {
         return this.word;
     }
     
+    public void setWord(String word){
+        this.word = word;
+    }
+    
     public boolean isWord() {
         return isWord;
     }
 
-    public void setWord(boolean isWord) {
+    public void setIsWord(boolean isWord) {
         this.isWord = isWord;
     }
 
