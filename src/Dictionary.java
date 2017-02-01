@@ -2,17 +2,17 @@ import java.util.HashSet;
 
 //TODO Future improvement: reading large file, will need to divide and conquer.
 public class Dictionary {
-    private HashSet<String> wordSet; 
+    private HashSet<String> _wordSet; 
 
     public Dictionary(HashSet<String> set){
-        this.wordSet = set;
+        this._wordSet = set;
     }
     
     public HashSet<String> getWordSet(){
-        return this.wordSet;
+        return this._wordSet;
     }
     
     public void setWordSet(HashSet<String> set){
-        this.wordSet = set;
+        this._wordSet = set;
     }
 }

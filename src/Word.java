@@ -2,43 +2,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Word {
-    private String word = "";
-    private boolean isWord = true;
-    private List<Word> newProposedWords;
+    private String _word = "";
+    private boolean _isWord = true;
+    private List<Word> _newProposedWords;
     
     public Word(String word) {
-        this.word = word;
+        this._word = word;
     }
     
     public String getWord(){
-        return this.word;
+        return this._word;
     }
     
     public void setWord(String word){
-        this.word = word;
+        this._word = word;
     }
     
     public boolean isWord() {
-        return isWord;
+        return _isWord;
     }
 
     public void setIsWord(boolean isWord) {
-        this.isWord = isWord;
+        this._isWord = isWord;
     }
 
     public List<Word> getNewProposedWords() {
-        return newProposedWords;
+        return _newProposedWords;
     }
 
     public void addNewProposedWord(String newProposedWords) {
-        if(this.newProposedWords==null) this.newProposedWords = new ArrayList<Word>();
+        if(this._newProposedWords==null) this._newProposedWords = new ArrayList<Word>();
         synchronized(this){
-        for(int i=0; i<this.newProposedWords.size(); i++){
-            if(this.newProposedWords.get(i).getWord().equals(newProposedWords)){
+        for(int i=0; i<this._newProposedWords.size(); i++){
+            if(this._newProposedWords.get(i).getWord().equals(newProposedWords)){
                 return;
             }
         }
-        this.newProposedWords.add(new Word(newProposedWords));
+        this._newProposedWords.add(new Word(newProposedWords));
         }
     }
 

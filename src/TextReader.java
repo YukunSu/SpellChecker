@@ -7,58 +7,58 @@ import java.util.List;
 
 //TODO Future improvement: able to read large file
 public class TextReader {
-    private List<Word> wordSet;
-    private List<String> wordsWithPunction; 
-    private HashSet<String> dictionaryWordSet;
-    private BufferedReader br = null;
-    private FileReader fr = null;
-    private StringBuilder sb = null;
+    private List<Word> _wordSet;
+    private List<String> _wordsWithPunction; 
+    private HashSet<String> _dictionaryWordSet;
+    private BufferedReader _br = null;
+    private FileReader _fr = null;
+    private StringBuilder _sb = null;
 
     public TextReader(){
-        wordSet = new ArrayList<Word>();
-        wordsWithPunction = new ArrayList<String>();
-        sb = new StringBuilder();
-        dictionaryWordSet = new HashSet<String>();
+        _wordSet = new ArrayList<Word>();
+        _wordsWithPunction = new ArrayList<String>();
+        _sb = new StringBuilder();
+        _dictionaryWordSet = new HashSet<String>();
     }
     
     public List<Word> getWordSet(){
-        return this.wordSet;
+        return this._wordSet;
     }
     
     public List<String> getWordSetWithPunction(){
-        return this.wordsWithPunction;
+        return this._wordsWithPunction;
     }
     
     public HashSet<String> getDictionaryWordSet(){
-        return this.dictionaryWordSet;
+        return this._dictionaryWordSet;
     }
     
     public void ReadFileAbsolutePath(String path, boolean isDictionary){
         try {
-            fr = new FileReader(path);
-            br = new BufferedReader(fr);
+            _fr = new FileReader(path);
+            _br = new BufferedReader(_fr);
             String sCurrentLine;
-            br = new BufferedReader(new FileReader(path));
+            _br = new BufferedReader(new FileReader(path));
 
-            while ((sCurrentLine = br.readLine()) != null) {
+            while ((sCurrentLine = _br.readLine()) != null) {
                 if(isDictionary){
-                    dictionaryWordSet.add(sCurrentLine);
+                    _dictionaryWordSet.add(sCurrentLine);
                 }else{
-                    sb.append(sCurrentLine);
+                    _sb.append(sCurrentLine);
                 }
             }
             
             if(!isDictionary){
-                String[] words = sb.toString().split("\\s+");
+                String[] words = _sb.toString().split("\\s+");
                 
                 for(int j=0; j<words.length; j++){
-                    wordsWithPunction.add(words[j]);
+                    _wordsWithPunction.add(words[j]);
                 }
                 
                 for(int i=0; i<words.length; i++){
                     String temp = Word.removeStartAndEndPunctuationOfAWord(words[i]);
                     if(temp!=null){
-                        wordSet.add(new Word(temp));
+                        _wordSet.add(new Word(temp));
                     }
                 }
             }
@@ -66,11 +66,11 @@ public class TextReader {
             e.printStackTrace();
         } finally {
             try {
-                if (br != null)
-                    br.close();
+                if (_br != null)
+                    _br.close();
 
-                if (fr != null)
-                    fr.close();
+                if (_fr != null)
+                    _fr.close();
                 
             } catch (IOException ex) {
                 ex.printStackTrace();
