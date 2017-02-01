@@ -75,7 +75,6 @@ public class GUI extends JFrame{
 
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equals("Load Dictionary")) {
-                //System.out.println("Button1 has been clicked");
                 _fcFileChooser = new JFileChooser();
                 Path path = Paths.get(Constants.currentDirectory, Constants.TEST_FILES_FOLDER);
                 _fcFileChooser.setCurrentDirectory(new File(path.toString()));
@@ -86,12 +85,10 @@ public class GUI extends JFrame{
                     _reader.ReadFileAbsolutePath(selectedFile.getAbsolutePath(), true);
                     _dict = new Dictionary(_reader.getDictionaryWordSet());
                     _lResult.setText("Selected file: " + selectedFile.getAbsolutePath());
-                    //System.out.println("Selected file: " + selectedFile.getAbsolutePath());
                 }
             }
           
             if (e.getActionCommand().equals("Load File")) {
-                //System.out.println("Button1 has been clicked");
                 _fcFileChooser = new JFileChooser();
                 Path path = Paths.get(Constants.currentDirectory, Constants.TEST_FILES_FOLDER);
                 _fcFileChooser.setCurrentDirectory(new File(path.toString()));
@@ -102,7 +99,6 @@ public class GUI extends JFrame{
                     _reader.ReadFileAbsolutePath(_selectedInputText.getAbsolutePath(), false);
                     _test = _reader.getWordSet();
                     _lResult.setText("Selected file: " + _selectedInputText.getAbsolutePath());
-                    //System.out.println("Selected file: " + selectedFile.getAbsolutePath());
                     }
               }
           
@@ -170,6 +166,7 @@ public class GUI extends JFrame{
                 TextWriter writer = new TextWriter();
                 writer.OverwriteExistingTextFile(_selectedInputText.getAbsolutePath(), content);
                 _lResult.setText("Overwrite file finished.");
+                set.clear();
             }
         }
     }
